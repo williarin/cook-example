@@ -1,0 +1,22 @@
+services:
+    database:
+        image: mysql
+        environment:
+            - MYSQL_USER=user
+            - MYSQL_PASSWORD=user
+            - MYSQL_ROOT_PASSWORD=root
+            - MYSQL_DATABASE=app
+        volumes:
+            - db-data:/var/lib/mysql
+
+    nginx:
+        image: nginx
+        networks:
+            - default
+            - nginx
+
+volumes:
+    db-data:
+
+networks:
+    nginx:

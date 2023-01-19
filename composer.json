@@ -1,0 +1,19 @@
+{
+    "name": "williarin/cook-example",
+    "description": "Example of package using a Cook recipe",
+    "license": "MIT",
+    "type": "library",
+    "authors": [
+        {
+            "name": "William Arin",
+            "email": "williamarin.dev@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "autoload": {
+        "psr-4": {
+            "Williarin\\CookExample\\": "src/"
+        }
+    }
+}

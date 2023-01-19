@@ -1,0 +1,53 @@
+files:
+    '%CONFIG_DIR%/bundles.php':
+        type: php_array
+        entries:
+            Williarin\CookExample\CookExampleBundle:
+                dev: true
+                test: true
+        filters:
+            keys: [class_constant]
+            values: [single_line_array]
+
+    composer.json:
+        type: json
+        entries:
+            scripts:
+                post-create-project-cmd: php -r "copy('config/local-example.php', 'config/local.php');"
+
+    '%CONFIG_DIR%/services.yaml':
+        type: yaml
+        content: |
+            parameters:
+                locale: fr
+            
+            services:
+                Some\Service: ~
+        blank_line_after: [services]
+
+    Makefile: recipe/Makefile
+
+    .env:
+        content: |-
+            SOME_ENV_VARIABLE='hello'
+            ANOTHER_ENV_VARIABLE='world'
+
+    docker-compose.yml:
+        type: docker_compose
+        source: recipe/docker-compose.yml
+
+directories:
+    '%CONFIG_DIR%/': recipe/config/
+    '%PUBLIC_DIR%/': recipe/public/
+    docker/: recipe/docker/
+
+post_install_output: |
+    <bg=blue;fg=white>              </>
+    <bg=blue;fg=white> What's next? </>
+    <bg=blue;fg=white>              </>
+
+      * <fg=blue>Create</> your own recipe:
+        1. Create a <comment>cook.yaml</> file in the root directory of your package
+        2. Use <comment>https://github.com/williarin/cook-example/blob/master/cook.yaml</> as an example
+
+      * <fg=blue>Read</> the full documentation at <comment>https://github.com/williarin/cook</>
